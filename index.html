@@ -56,8 +56,26 @@
     <link rel="stylesheet" href="css/custom.css">
     <!-- Favicon-->
     <link rel="shortcut icon" href="img/meetin.png">
+    <link rel="stylesheet" href="css/flip.min.css">
   </head>
   <body>
+    <style>
+      .tick {
+          padding-bottom: 1em;
+          font-size:1rem;
+          font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+      }
+
+      .tick-label {
+          font-size:.375em;
+          text-align:center;
+      }
+
+      .tick-group {
+          margin:0 .25em;
+          text-align:center;
+      }
+  </style>
     <!-- navbar-->
     <header class="header">
       <nav class="navbar navbar-light navbar-expand-lg fixed-top" id="navbar">
@@ -84,8 +102,7 @@
           <div class="col-lg-5 py-5">
             <h1>Pre-register for <code>meetin</code></h1>
             <p class="my-4 text-muted">Join the first train of Meetin users and just "Meet" your partner
-              <pre>Meetin is a simple dating app, 
-	      built with you in mind</pre></p>
+              <pre>Meetin is a simple dating app, built with you in mind</pre></p>
             <!-- <ul class="list-inline mb-0">
               <li class="list-inline-item mb-2 mb-lg-0"><a class="btn btn-primary btn-lg px-4" href="#!"> <i class="fab fa-google-play me-3"></i>Google Play</a></li>
               <li class="list-inline-item"><a class="btn btn-primary btn-lg px-4" href="#!"> <i class="fab fa-app-store me-3"></i>App Store</a></li>
@@ -136,6 +153,32 @@
         </div>
     </div>
 </form>
+<div class="tick"
+     data-did-init="handleTickInit">
+
+    <div data-repeat="true"
+         data-layout="horizontal center fit"
+         data-transform="preset(d, h, m, s) -> delay">
+
+        <div class="tick-group">
+
+            <div data-key="value"
+                 data-repeat="true"
+                 data-transform="pad(00) -> split -> delay">
+
+                <span data-view="flip"></span>
+
+            </div>
+
+            <span data-key="label"
+                  data-view="text"
+                  class="tick-label"></span>
+
+        </div>
+
+    </div>
+
+</div>
 </div>
 <script type='text/javascript' src='//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js'></script><script type='text/javascript'>(function($) {window.fnames = new Array(); window.ftypes = new Array();fnames[1]='FNAME';ftypes[1]='text';fnames[0]='EMAIL';ftypes[0]='email';}(jQuery));var $mcj = jQuery.noConflict(true);</script>
 <!--End mc_embed_signup-->
@@ -234,5 +277,16 @@
     </script>
     <!-- FontAwesome CSS - loading as last, so it doesn't block rendering-->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+    <script>
+      function handleTickInit(tick) {
+            var nextYear = new Date(2022,10,30);
+
+        Tick.count.down(nextYear + '-01-01').onupdate = function(value) {
+          tick.value = value;
+            };
+
+      }
+    </script>
+    <script src="js/flip.min.js"></script>
   </body>
 </html>
