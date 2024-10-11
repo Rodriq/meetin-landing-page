@@ -241,7 +241,8 @@
       </div>
       <div class="copyrights">
         <div class="container text-center py-4">
-          <p class="mb-0 text-muted text-sm">&copy; 2022, Meetin.</p>
+          <!-- <p class="mb-0 text-muted text-sm">&copy; 2022, Meetin.</p> -->
+		<p class="mb-0 text-muted text-sm">&copy; <span id="current-year"></span>, Meetin.</p>
           <!-- If you want to remove the backlink, please purchase the Attribution-Free License. See details in readme.txt or license.txt. Thanks!-->
         </div>
       </div>
@@ -279,7 +280,12 @@
     <!-- FontAwesome CSS - loading as last, so it doesn't block rendering-->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
     <script>
-      function handleTickInit(tick) {
+      / Get the current year
+    const currentYear = new Date().getFullYear();
+    // Set the current year in the span
+    document.getElementById('current-year').textContent = currentYear;
+
+	    function handleTickInit(tick) {
             var nextYear = new Date(2022,10,30);
 
         Tick.count.down(nextYear + '-01-01').onupdate = function(value) {
